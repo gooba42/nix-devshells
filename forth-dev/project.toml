@@ -1,0 +1,7 @@
+# Project metadata for Forth template
+[project]
+name = "forth-dev-template"
+description = "Nix flake template for Forth projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

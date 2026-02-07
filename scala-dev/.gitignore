@@ -1,0 +1,15 @@
+# Scala artifacts
+*.class
+*.jar
+*.log
+/target/
+/project/target/
+/project/project/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

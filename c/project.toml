@@ -1,0 +1,6 @@
+[project]
+name = "c-template"
+description = "A reusable Nix flake template for C/C++ development."
+version = "0.1.0"
+authors = ["gooba42 <your@email>"]
+license = "MIT"

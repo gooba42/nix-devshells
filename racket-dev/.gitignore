@@ -1,0 +1,18 @@
+# Racket artifacts
+compiled/
+*.zo
+*.dep
+*.log
+*.plt
+*.ss
+*.rktl
+*.bak
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

@@ -1,0 +1,7 @@
+# Project metadata for FT232H template
+[project]
+name = "ft232h-template"
+description = "Nix flake template for FT232H Python projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

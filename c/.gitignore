@@ -1,0 +1,16 @@
+# C/C++ ignores
+*.o
+*.a
+*.so
+*.out
+*.exe
+*.dSYM/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

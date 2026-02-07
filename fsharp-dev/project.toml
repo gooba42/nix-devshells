@@ -1,0 +1,7 @@
+# Project metadata for F# template
+[project]
+name = "fsharp-dev-template"
+description = "Nix flake template for F# projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

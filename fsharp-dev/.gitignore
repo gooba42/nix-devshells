@@ -1,0 +1,18 @@
+# F# artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.fsx
+*.fsi
+*.fsproj.user
+/build/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

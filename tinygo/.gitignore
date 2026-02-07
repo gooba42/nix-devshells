@@ -1,0 +1,13 @@
+# TinyGo build artifacts
+*.hex
+*.uf2
+*.bin
+*.elf
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

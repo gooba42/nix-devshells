@@ -1,0 +1,11 @@
+# Rust embedded build artifacts
+/target/
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

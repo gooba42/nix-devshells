@@ -1,0 +1,15 @@
+# Zig artifacts
+zig-cache/
+zig-out/
+*.o
+*.exe
+*.out
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

@@ -1,0 +1,13 @@
+# Go build artifacts
+/bin/
+*.exe
+*.test
+*.out
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

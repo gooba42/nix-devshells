@@ -1,0 +1,24 @@
+# OpenSCAD build artifacts
+*.stl
+*.3mf
+*.amf
+*.off
+*.dxf
+*.svg
+*.png
+
+# Rendered outputs
+output/
+exports/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/
+
+# OS
+.DS_Store
+Thumbs.db

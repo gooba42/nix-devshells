@@ -1,0 +1,15 @@
+# Forth artifacts
+*.img
+*.map
+*.log
+*.bak
+*.tmp
+*.fs~
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

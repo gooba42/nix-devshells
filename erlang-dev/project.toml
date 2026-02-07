@@ -1,0 +1,7 @@
+# Project metadata for Erlang template
+[project]
+name = "erlang-dev-template"
+description = "Nix flake template for Erlang projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

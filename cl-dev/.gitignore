@@ -1,0 +1,28 @@
+# Common Lisp artifacts
+*.fasl
+*.x86f
+*.lx64fsl
+*.dx64fsl
+*.wx64fsl
+*.ufsl
+*.cfsl
+*.pfsl
+*.dfsl
+*.tfsl
+*.sfsl
+*.ofsl
+*.fsl
+*.fas
+*.lib
+*.core
+*.log
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

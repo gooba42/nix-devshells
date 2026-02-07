@@ -1,0 +1,7 @@
+# Project metadata for Common Lisp template
+[project]
+name = "cl-dev-template"
+description = "Nix flake template for Common Lisp projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

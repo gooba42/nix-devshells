@@ -1,0 +1,66 @@
+[workspace]
+members = []
+resolver = "2"
+
+[package]
+name = "embedded-rust-app"
+version = "0.1.0"
+edition = "2021"
+
+# Uncomment for your target platform
+# [package.metadata.docs.rs]
+# default-target = "thumbv7em-none-eabihf"
+
+[dependencies]
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+# cortex-m-semihosting = "0.3"  # For debugging via semihosting
+
+# Example HAL (uncomment for STM32F3DISCOVERY)
+# stm32f3 = "0.13"
+# stm32f3xx-hal = { version = "0.10", features = ["stm32f303"] }
+# stm32f3-discovery = "0.5"
+
+# Generic embedded-hal traits
+embedded-hal = "0.2"
+# embedded-hal = "1.0"  # Newer version (2024+)
+
+[dependencies.panic-halt]
+version = "0.2"
+optional = true
+
+[dependencies.panic-semihosting]
+version = "0.6"
+optional = true
+
+[features]
+default = ["panic-halt"]
+
+# Enable this feature to enable semihosting for panic messages
+semihosting = ["panic-semihosting"]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev.package."*"]
+opt-level = 2
+
+# Example target configuration for ARM Cortex-M
+# [[bin]]
+# name = "app"
+# path = "src/main.rs"
+
+# For STM32F3DISCOVERY specific builds:
+# [package.metadata.cargo-generate]
+# vcs = false
+# ignore = [
+#     "target/",
+#     ".git",
+#     "Cargo.lock",
+# ]

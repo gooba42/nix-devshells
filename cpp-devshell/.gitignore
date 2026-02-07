@@ -1,0 +1,17 @@
+# C++ build artifacts
+*.o
+*.a
+*.so
+*.out
+/build/
+/cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

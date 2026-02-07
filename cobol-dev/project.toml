@@ -1,0 +1,7 @@
+# Project metadata for COBOL template
+[project]
+name = "cobol-dev-template"
+description = "Nix flake template for COBOL projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

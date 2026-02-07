@@ -1,0 +1,16 @@
+# Ada artifacts
+*.ali
+*.o
+*.gpr
+*.ad[sb]
+*.log
+*.out
+/build/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

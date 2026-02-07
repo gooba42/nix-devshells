@@ -1,0 +1,16 @@
+# COBOL artifacts
+*.int
+*.gnt
+*.o
+*.so
+*.exe
+*.out
+/build/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

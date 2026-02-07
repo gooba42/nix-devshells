@@ -1,0 +1,14 @@
+# Scheme artifacts
+*.bin
+*.fasl
+*.log
+*.tmp
+*.bak
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

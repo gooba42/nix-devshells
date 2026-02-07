@@ -1,0 +1,7 @@
+# Project metadata for Embedded Rust template
+[project]
+name = "embedded-rust-template"
+description = "Nix flake template for Embedded Rust projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

@@ -1,0 +1,7 @@
+# Project metadata for C++ template
+[project]
+name = "cpp-devshell-template"
+description = "Nix flake template for C++ projects with devShell"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

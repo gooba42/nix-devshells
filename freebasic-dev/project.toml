@@ -1,0 +1,7 @@
+# Project metadata for FreeBASIC template
+[project]
+name = "freebasic-dev-template"
+description = "Nix flake template for FreeBASIC projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

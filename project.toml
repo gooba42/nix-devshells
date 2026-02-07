@@ -1,0 +1,7 @@
+# Example project metadata for template flakes
+[project]
+name = "<template-name>"
+description = "A reusable Nix flake template for <language/platform>."
+version = "0.1.0"
+authors = ["gooba42 <your@email>"]
+license = "MIT"

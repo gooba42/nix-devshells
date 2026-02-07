@@ -1,0 +1,15 @@
+# Pascal artifacts
+*.o
+*.ppu
+*.exe
+*.out
+*.bak
+/build/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

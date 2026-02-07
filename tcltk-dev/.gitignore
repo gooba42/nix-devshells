@@ -1,0 +1,14 @@
+# Tcl/Tk artifacts
+*.log
+*.bak
+*.tmp
+*.out
+*.tcl~
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

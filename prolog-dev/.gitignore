@@ -1,0 +1,13 @@
+# Prolog artifacts
+*.qlf
+*.log
+*.tmp
+*.bak
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

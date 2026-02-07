@@ -1,0 +1,16 @@
+# FreeBASIC artifacts
+*.o
+*.asm
+*.bin
+*.exe
+*.out
+*.bas.bak
+/build/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

@@ -1,0 +1,18 @@
+# Erlang artifacts
+ebin/
+*.beam
+*.dump
+*.ez
+*.plt
+*.boot
+*.rel
+*.script
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

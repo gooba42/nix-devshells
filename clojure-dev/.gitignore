@@ -1,0 +1,15 @@
+# Clojure artifacts
+*.class
+*.jar
+*.war
+*.clj-kondo/
+/.cpcache/
+/target/
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

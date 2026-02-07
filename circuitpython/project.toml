@@ -1,0 +1,7 @@
+# Project metadata for CircuitPython template
+[project]
+name = "circuitpython-template"
+description = "Nix flake template for CircuitPython projects"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+license = "MIT"

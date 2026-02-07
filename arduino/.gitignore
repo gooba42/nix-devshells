@@ -1,0 +1,12 @@
+# Arduino build artifacts
+.pio/
+.vscode/
+.pioenvs/
+.piolibdeps/
+
+# IDE
+.idea/
+
+# Nix
+result
+.direnv/

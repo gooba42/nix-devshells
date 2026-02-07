@@ -1,0 +1,20 @@
+<Project Sdk="nanoFramework.TestFramework.CSharp">
+    <PropertyGroup>
+        <TargetFramework>nanoFramework</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <AssemblyName>NanoFrameworkApp</AssemblyName>
+        <RootNamespace>NanoFrameworkApp</RootNamespace>
+        <Language>C#</Language>
+        <LangVersion>latest</LangVersion>
+        <IsPackable>false</IsPackable>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <NuGetReference Include="nanoFramework.System.Device.Gpio" Version="1.*" />
+        <NuGetReference Include="nanoFramework.System.Device.Pwm" Version="1.*" />
+        <NuGetReference Include="nanoFramework.System.Device.Spi" Version="1.*" />
+        <NuGetReference Include="nanoFramework.System.Device.I2c" Version="1.*" />
+    </ItemGroup>
+</Project>

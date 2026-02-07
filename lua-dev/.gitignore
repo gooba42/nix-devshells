@@ -1,0 +1,13 @@
+# Lua artifacts
+*.luac
+*.log
+*.bak
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# Nix
+result
+.direnv/

@@ -1,0 +1,19 @@
+# Nix
+result
+result-*
+.direnv
+.envrc.local
+
+# Editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# direnv
+.envrc.local
+
+# flake lock (optional - version control for reproducibility is often desired)
+# flake.lock
