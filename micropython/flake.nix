@@ -51,6 +51,9 @@
               python3Packages.pip
               python3Packages.pyserial
 
+              # USB device detection
+              usbutils # provides lsusb for board detection
+
               # Flashing tools for different boards
               esptool # ESP32, ESP8266
               picotool # Raspberry Pi Pico (RP2040)
@@ -90,6 +93,7 @@
               echo "  - screen:    Serial terminal"
               echo ""
               echo "Quick start:"
+              echo "  0. Detect board:  make detect-board"
               echo "  1. Download MicroPython firmware from micropython.org/download"
               echo "  2. Flash: esptool.py --port /dev/ttyUSB0 write_flash -z 0x1000 firmware.bin"
               echo "  3. Upload: ampy --port /dev/ttyUSB0 put src/main.py"

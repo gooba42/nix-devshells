@@ -1,0 +1,2 @@
+# Place MicroPython firmware files here (.uf2 or .bin files)
+# These files will be ignored by git but the directory structure is preserved

@@ -3,6 +3,12 @@
 __pycache__/
 *.py[cod]
 
+# Firmware files (keep directory structure)
+firmware/*.uf2
+firmware/*.bin
+firmware/*.hex
+firmware/*.dfu
+
 # IDE
 .vscode/
 .idea/
