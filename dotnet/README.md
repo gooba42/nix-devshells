@@ -82,6 +82,7 @@ Use the included `install-templates.sh` helper script to quickly install popular
 # Install specific templates
 ./install-templates.sh aws       # AWS Lambda
 ./install-templates.sh nunit     # NUnit 3
+./install-templates.sh reqnroll  # Reqnroll BDD
 ./install-templates.sh avalonia  # Avalonia UI (cross-platform)
 ./install-templates.sh clean     # Clean Architecture
 
@@ -97,7 +98,7 @@ Use the included `install-templates.sh` helper script to quickly install popular
 | .NET Boxed | `dotnet new install Boxed.Templates` | Production-ready ASP.NET Core templates |
 | Avalonia UI | `dotnet new install Avalonia.Templates` | Cross-platform UI framework |
 | NUnit 3 | `dotnet new install NUnit3.DotNetNew.Template` | NUnit test project templates |
-| SpecFlow | `dotnet new install SpecFlow.Templates.DotNet` | BDD testing with SpecFlow |
+| Reqnroll | `dotnet new install Reqnroll.Templates.DotNet` | BDD testing with Gherkin (Cucumber-style) |
 | Clean Architecture | `dotnet new install Paulovich.Manga` | Clean Architecture pattern |
 | Giraffe (F#) | `dotnet new install giraffe-template` | F# web framework |
 | SAFE Stack (F#) | `dotnet new install SAFE.Template` | Full-stack F# development |

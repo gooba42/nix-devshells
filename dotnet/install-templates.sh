@@ -33,7 +33,7 @@ if [ "$#" -eq 0 ]; then
     echo "  blazor    - Blazor templates"
     echo "  nunit     - NUnit 3 test templates"
     echo "  xunit     - xUnit test templates"
-    echo "  specflow  - SpecFlow BDD templates"
+    echo "  reqnroll  - Reqnroll BDD templates"
     echo "  avalonia  - Avalonia UI (cross-platform)"
     echo "  boxed     - ASP.NET Core Boxed templates"
     echo "  clean     - Clean Architecture templates"
@@ -47,7 +47,7 @@ case "$1" in
         echo "Installing all popular templates..."
         install_template "AWS Lambda" "Amazon.Lambda.Templates"
         install_template "NUnit 3" "NUnit3.DotNetNew.Template"
-        install_template "SpecFlow" "SpecFlow.Templates.DotNet"
+        install_template "Reqnroll" "Reqnroll.Templates.DotNet"
         install_template ".NET Boxed" "Boxed.Templates"
         install_template "Avalonia UI" "Avalonia.Templates"
         install_template "Clean Architecture (Manga)" "Paulovich.Manga"
@@ -69,7 +69,7 @@ case "$1" in
     testing)
         echo "Installing testing templates..."
         install_template "NUnit 3" "NUnit3.DotNetNew.Template"
-        install_template "SpecFlow" "SpecFlow.Templates.DotNet"
+        install_template "Reqnroll" "Reqnroll.Templates.DotNet"
         install_template "NSpec" "dotnet-new-nspec"
         install_template "Expecto (F#)" "Expecto.Template"
         ;;
@@ -96,8 +96,8 @@ case "$1" in
         install_template "xUnit Test File" "GatewayProgrammingSchool.xUnit.CSharp"
         ;;
 
-    specflow)
-        install_template "SpecFlow" "SpecFlow.Templates.DotNet"
+    reqnroll)
+        install_template "Reqnroll" "Reqnroll.Templates.DotNet"
         ;;
 
     avalonia)
@@ -128,7 +128,7 @@ case "$1" in
         echo "  all       - Install all popular templates"
         echo "  web       - Web development (Boxed, Carter, Giraffe)"
         echo "  cloud     - Cloud platforms (AWS Lambda, Azure Functions)"
-        echo "  testing   - Testing frameworks (NUnit, SpecFlow, NSpec)"
+        echo "  testing   - Testing frameworks (NUnit, Reqnroll, NSpec)"
         echo "  mobile    - Mobile development (Avalonia, Fabulous)"
         echo ""
         echo "Individual templates:"
@@ -136,7 +136,7 @@ case "$1" in
         echo "  blazor    - Blazor templates"
         echo "  nunit     - NUnit 3 test templates"
         echo "  xunit     - xUnit test templates"
-        echo "  specflow  - SpecFlow BDD templates"
+        echo "  reqnroll  - Reqnroll BDD templates"
         echo "  avalonia  - Avalonia UI (cross-platform)"
         echo "  boxed     - ASP.NET Core Boxed templates"
         echo "  clean     - Clean Architecture templates"
