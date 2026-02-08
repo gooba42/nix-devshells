@@ -66,6 +66,15 @@
               screen
               minicom
 
+              # Testing and mocking frameworks
+              python3Packages.pytest
+              python3Packages.pytest-mock
+              python3Packages.pytest-cov
+
+              # Additional Adafruit testing utilities
+              python3Packages.adafruit-platformdetect # Platform detection
+              python3Packages.adafruit-pureio # Hardware abstraction for testing
+
               # Build tools (if building MicroPython from source)
               git
               cmake

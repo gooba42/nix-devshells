@@ -73,7 +73,19 @@
               pkgs.python3Packages.pip
               pkgs.python3Packages.black
 
-              # CircuitPython libraries via pip
+              # Testing and mocking frameworks
+              pkgs.python3Packages.pytest
+              pkgs.python3Packages.pytest-mock
+              pkgs.python3Packages.pytest-cov
+
+              # CircuitPython tools and libraries
+              pkgs.circup # CircuitPython library updater
+              pkgs.mpremote # Modern MicroPython device interaction (works with CircuitPython)
+              pkgs.adafruit-ampy # Classic utility for board interaction
+              pkgs.python3Packages.adafruit-platformdetect # Platform detection
+              pkgs.python3Packages.adafruit-pureio # Hardware abstraction
+
+              # Additional libraries via pip
               # Note: additional packages can be installed via pip in the shell
 
               # Serial monitoring and REPL access (using screen instead of picocom/minicom)
