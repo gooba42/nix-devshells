@@ -41,6 +41,7 @@
               # Optional: mesh processing tools
               meshlab # Mesh viewer/editor
               openscad-lsp # Language server for OpenSCAD (IDE support)
+              treefmt
 
               # Version control
               git

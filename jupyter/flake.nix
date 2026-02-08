@@ -24,6 +24,7 @@
               ps: with ps; [
                 ipykernel
                 jupyterlab
+                black
               ];
             pythonEnv = python.withPackages pythonPkgs;
           in

@@ -12,6 +12,7 @@
         pkgs.mkShell {
           buildInputs = [
             pkgs.erlang
+            pkgs.erlfmt
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

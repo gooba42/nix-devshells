@@ -12,6 +12,7 @@
         pkgs.mkShell {
           buildInputs = [
             pkgs.dotnet-sdk
+            pkgs.fantomas
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

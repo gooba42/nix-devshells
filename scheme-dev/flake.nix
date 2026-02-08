@@ -12,6 +12,7 @@
         pkgs.mkShell {
           buildInputs = [
             pkgs.guile
+            pkgs.parinfer-rust
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

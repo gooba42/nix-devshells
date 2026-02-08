@@ -43,6 +43,7 @@
 
               # Go toolchain (dependency of TinyGo)
               go
+              gofumpt
 
               # Embedded/microcontroller flashing tools
               openocd

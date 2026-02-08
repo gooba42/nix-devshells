@@ -69,6 +69,7 @@
           packages = with python.pkgs; [
             venvShellHook
             pip
+            black
           ];
         };
 
@@ -107,6 +108,7 @@
               [
                 venvShellHook
                 pip
+                black
               ]
               ++ [ pkgs.git ];
           };

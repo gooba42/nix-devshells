@@ -12,6 +12,7 @@
         pkgs.mkShell {
           buildInputs = [
             pkgs.scala-cli
+            pkgs.scalafmt
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

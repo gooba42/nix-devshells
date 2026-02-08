@@ -45,6 +45,7 @@
                 pkgs.dotnet-sdk
                 pkgs.dotnet-ef
                 pkgs.dotnet-aspnetcore
+                pkgs.csharpier
                 pkgs.icu
                 pkgs.openssl
                 pkgs.krb5

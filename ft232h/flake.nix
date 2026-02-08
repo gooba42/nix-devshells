@@ -42,6 +42,7 @@
             py.pip
             py.setuptools
             py.wheel
+            py.black
             py.pyftdi
             py.numpy
             libftdi1

@@ -53,6 +53,7 @@
           buildInputs = with pkgs; [
             # .NET SDK (required for building C# projects)
             dotnet-sdk_8
+            csharpier
 
             # Mono (required for build tools on Linux/macOS)
             mono

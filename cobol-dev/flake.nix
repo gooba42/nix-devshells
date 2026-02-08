@@ -12,6 +12,7 @@
         pkgs.mkShell {
           buildInputs = [
             pkgs.gnucobol
+            pkgs.treefmt
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

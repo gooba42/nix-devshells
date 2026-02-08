@@ -42,6 +42,9 @@
               # goimports, godoc, etc.
               gotools
 
+              # go formatter (stricter gofmt)
+              gofumpt
+
               # https://github.com/golangci/golangci-lint
               golangci-lint
 

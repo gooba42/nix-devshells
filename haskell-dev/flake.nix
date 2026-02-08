@@ -13,6 +13,7 @@
           buildInputs = [
             pkgs.haskell.compiler.ghc96
             pkgs.cabal-install
+            pkgs.ormolu
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

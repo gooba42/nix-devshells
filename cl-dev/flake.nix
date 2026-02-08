@@ -13,6 +13,7 @@
           buildInputs = [
             pkgs.sbcl
             pkgs.quicklisp
+            pkgs.parinfer-rust
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

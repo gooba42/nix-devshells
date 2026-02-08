@@ -71,6 +71,7 @@
               pkgs.python3Packages.wheel
               pkgs.python3Packages.setuptools
               pkgs.python3Packages.pip
+              pkgs.python3Packages.black
 
               # CircuitPython libraries via pip
               # Note: additional packages can be installed via pip in the shell
@@ -81,7 +82,8 @@
 
               # For building/managing CircuitPython bundles
               pkgs.git
-            pkgs.gnumake
+              pkgs.gnumake
+            ];
             shellHook = ''
               # Initialize git repository if not already present
               if [ ! -d .git ]; then

@@ -13,6 +13,7 @@
           buildInputs = [
             pkgs.clojure
             pkgs.leiningen
+            pkgs.cljfmt
             pkgs.nix
             pkgs.alejandra
             pkgs.statix

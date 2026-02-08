@@ -10,20 +10,20 @@
           pkgs = import nixpkgs { system = "x86_64-linux"; };
         in
         pkgs.mkShell {
-            buildInputs = [
-              pkgs.tcl
-              pkgs.tk
-              pkgs.nix
-              pkgs.alejandra
-              pkgs.statix
-              pkgs.deadnix
-              pkgs.nix-init
-              pkgs.nix-update
-              pkgs.nix-output-monitor
-              pkgs.nix-tree
-              pkgs.nvd
-              pkgs.git
-            ];
+          buildInputs = [
+            pkgs.tcl
+            pkgs.tk
+            pkgs.treefmt
+            pkgs.nix
+            pkgs.alejandra
+            pkgs.statix
+            pkgs.deadnix
+            pkgs.nix-init
+            pkgs.nix-update
+            pkgs.nix-output-monitor
+            pkgs.nix-tree
+            pkgs.nvd
+            pkgs.git
           ];
           shellHook = ''
             # Initialize git repository if not already present

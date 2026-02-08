@@ -56,6 +56,7 @@
               gradle
               jdk
               maven
+              google-java-format
               ncurses
               patchelf
               zlib
