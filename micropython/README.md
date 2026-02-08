@@ -8,6 +8,18 @@ Nix flake template for MicroPython development across ESP32, ESP8266, Raspberry 
 nix develop
 # or with direnv:
 direnv allow
+```
+
+### Automatic Environment Setup
+
+When you enter the devShell (via `direnv allow` or `nix develop`), the following happens automatically:
+
+✓ **Git Repository**: Initializes `.git` if not present
+✓ **Python Virtual Environment**: Creates and activates `.venv/` for isolated pip packages
+✓ **Tools Installation**: Installs `adafruit-ampy`, `mpremote`, and `rshell` via pip
+✓ **Environment Banner**: Displays available tools and quick-start commands
+
+No manual setup needed! Just start coding.
 
 ## Packaging for nixpkgs
 
@@ -38,6 +50,7 @@ Get MicroPython firmware from [micropython.org/download](https://micropython.org
 ### 2. Flash Firmware
 
 **ESP32/ESP8266:**
+
 ```bash
 esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-firmware.bin
 ```
@@ -114,16 +127,52 @@ rshell --port /dev/ttyUSB0
 
 ## Included Tools
 
-- **esptool** — ESP32/ESP8266 flashing
-- **picotool** — RP2040 (Pico) operations
-- **dfu-util** — STM32 DFU flashing
-- **stm32flash** — STM32 serial flashing
-- **ampy** — File upload/download
-- **mpremote** — Official MicroPython remote control
-- **rshell** — Remote shell for MicroPython
-- **screen/minicom** — Serial terminals
-- **pytest** — Unit testing framework
-- **pytest-mock** — Mocking for hardware testing
+| Tool | Purpose |
+|------|---------|
+| **esptool** | ESP32/ESP8266 firmware flashing |
+| **picotool** | RP2040 (Pico) firmware operations |
+| **dfu-util** | STM32 DFU bootloader flashing |
+| **stm32flash** | STM32 serial port flashing |
+| **openocd** | JTAG/SWD debugging for STM32 and ARM boards |
+| **cmake** | Build system for building MicroPython from source |
+| **gcc/gnumake** | C compiler and build tools |
+| **git** | Version control (auto-initialized in devShell) |
+| **black** | Python code formatter |
+
+## Python Tools (in .venv)
+
+The environment automatically includes via pip:
+
+| Tool | Purpose |
+|------|---------|
+| **ampy** | File transfer and REPL over serial |
+| **mpremote** | Official MicroPython device control and REPL |
+| **rshell** | Remote shell for file operations on device |
+
+## Testing & Development Features
+
+The devShell includes comprehensive testing tools:
+
+- **pytest** (8.4.2) - Framework for writing and running tests
+- **pytest-mock** (3.15.1) - Mock library for hardware simulation
+- **pytest-cov** (6.2.1) - Code coverage reporting
+- **adafruit-platformdetect** - Platform detection for board identification
+- **adafruit-pureio** - Hardware abstraction for testing without devices
+
+**Example usage:**
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage report
+pytest --cov=src tests/
+
+# Run specific test
+pytest tests/test_main.py -v
+```
+
+Use these to test MicroPython code locally before deploying to hardware.
 
 ## Makefile Targets
 

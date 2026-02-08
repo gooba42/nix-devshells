@@ -15,5 +15,6 @@ result-*
 # direnv
 .envrc.local
 
-# flake lock (optional - version control for reproducibility is often desired)
-# flake.lock
+# Templates: let project owners decide when to lock versions
+flake.lock
+**/flake.lock

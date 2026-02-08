@@ -30,6 +30,17 @@ nix flake init -t /home/gooba42/nixos/flakes#circuitpython
 direnv allow
 ```
 
+### Automatic Environment Setup
+
+When you enter the devShell (via `direnv allow` or `nix develop`), the following happens automatically:
+
+✓ **Git Repository**: Initializes `.git` if not present
+✓ **Python Virtual Environment**: Creates and activates `.venv/` for isolated pip packages
+✓ **Tools Installation**: Installs `adafruit-ampy` via pip for device communication
+✓ **Environment Banner**: Displays available tools and quick commands
+
+No manual setup needed! Just start coding.
+
 ### 2. Flash CircuitPython Firmware
 
 Download firmware from [circuitpython.org](https://circuitpython.org/downloads) for your board.
@@ -113,12 +124,46 @@ ampy --port /dev/ttyACM0 put src/main.py main.py
 | `picotool` | Manage Pico firmware and read/write |
 | `openocd` | Debug via SWD/JTAG interface |
 | `screen` / `socat` | Serial terminal for REPL |
-| `python3` | Python interpreter |
+| `python3` | Python interpreter (3.11+) |
 | `pyserial` | Python serial library |
 | `pip` | Install CircuitPython libraries |
+| `black` | Python code formatter |
 | `ampy` | Upload files to CircuitPython devices |
-| `mpremote` | Modern MicroPython/CircuitPython device interaction |
-| `circup` | CircuitPython library updater |
+| `mpremote` | Modern device interaction and REPL |
+| `circup` | CircuitPython library updater and manager |
+
+## Python Packages (in .venv)
+
+The environment automatically includes via pip:
+
+| Package | Purpose |
+|---------|---------|
+| `adafruit-ampy` | File transfer and REPL over serial |
+| `adafruit-platformdetect` | Detect board type and hardware |
+| `adafruit-pureio` | Hardware abstraction for testing |
+
+## Testing & Development Features
+
+The devShell includes comprehensive testing tools:
+
+- **pytest** (8.4.2) - Framework for writing and running tests
+- **pytest-mock** (3.15.1) - Mock library for hardware simulation
+- **pytest-cov** (6.2.1) - Code coverage reporting
+
+**Example usage:**
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage report
+pytest --cov=src tests/
+
+# Run specific test
+pytest tests/test_main.py -v
+```
+
+Use these to test CircuitPython code locally before deploying to hardware.
 | `pytest` | Test CircuitPython code locally |
 
 ## CircuitPython Library Bundle
