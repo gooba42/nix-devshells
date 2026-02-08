@@ -25,6 +25,12 @@
             pkgs.git
           ];
           shellHook = ''
+            # Initialize git repository if not already present
+            if [ ! -d .git ]; then
+              git init
+              echo "✓ Initialized git repository"
+            fi
+
             echo "\033[1;35m" # magenta bold
             echo "─────────────────────────────────────────────"
             echo " Common Lisp Nix DevShell (SBCL + Quicklisp)"

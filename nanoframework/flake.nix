@@ -89,6 +89,12 @@
           ];
 
           shellHook = ''
+            # Initialize git repository if not already present
+            if [ ! -d .git ]; then
+              git init
+              echo "✓ Initialized git repository"
+            fi
+
             export DOTNET_ROOT=${pkgs.dotnet-sdk_8}
             export PATH="${pkgs.dotnet-sdk_8}/bin:$PATH"
 

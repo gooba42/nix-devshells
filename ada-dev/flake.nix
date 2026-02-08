@@ -24,6 +24,12 @@
             pkgs.git
           ];
           shellHook = ''
+            # Initialize git repository if not already present
+            if [ ! -d .git ]; then
+              git init
+              echo "✓ Initialized git repository"
+            fi
+
             echo "[ada-dev-template] Welcome to the Ada dev shell!"
             echo "Tools: gnat, gprbuild, alejandra, statix, deadnix, git"
             echo "Run 'make build' to build, or 'make run' to run the example. See README.md for usage."

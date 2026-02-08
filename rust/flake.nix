@@ -61,6 +61,7 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               rustToolchain
+              git
               openssl
               pkg-config
               cargo-deny
@@ -89,6 +90,12 @@
             };
 
             shellHook = ''
+              # Initialize git repository if not already present
+              if [ ! -d .git ]; then
+                git init
+                echo "✓ Initialized git repository"
+              fi
+
               # Ensure user's Cargo-installed binaries are available
               export PATH="$HOME/.cargo/bin:$PATH"
 

@@ -44,8 +44,17 @@
 
               # https://github.com/golangci/golangci-lint
               golangci-lint
+
+              # Version control
+              git
             ];
             shellHook = ''
+              # Initialize git repository if not already present
+              if [ ! -d .git ]; then
+                git init
+                echo "✓ Initialized git repository"
+              fi
+
               echo "[golang-template] Welcome to the Go dev shell!"
               echo "Tools: go, gotools, golangci-lint"
               echo "Run 'go build' to build, or 'make' for common tasks. See README.md for usage."

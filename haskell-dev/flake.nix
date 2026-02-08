@@ -24,6 +24,13 @@
             pkgs.nvd
             pkgs.git
           ];
+          shellHook = ''
+            # Initialize git repository if not already present
+            if [ ! -d .git ]; then
+              git init
+              echo "✓ Initialized git repository"
+            fi
+          '';
         };
       templates.default = {
         path = ./template;

@@ -4,10 +4,11 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-  }:
+  outputs =
+    {
+      nixpkgs,
+      flake-utils,
+    }:
     {
       templates.default = {
         path = ./.;
@@ -27,11 +28,13 @@
       };
     }
     // flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
         python = pkgs.python3;
         py = pkgs.python3Packages;
-      in {
+      in
+      {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             python
@@ -49,6 +52,12 @@
 
           # Convenience env vars for Blinka FT232H
           shellHook = ''
+            # Initialize git repository if not already present
+            if [ ! -d .git ]; then
+              git init
+              echo "✓ Initialized git repository"
+            fi
+
             export BLINKA_FT232H=1
             echo "FT232H Blinka environment loaded"
             echo "  python: $(python --version)"

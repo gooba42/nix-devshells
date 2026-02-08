@@ -40,6 +40,12 @@
             pkgs.git
           ];
           shellHook = ''
+            # Initialize git repository if not already present
+            if [ ! -d .git ]; then
+              git init
+              echo "✓ Initialized git repository"
+            fi
+
             export QT_QPA_PLATFORM=wayland
             export XDG_DATA_DIRS=$XDG_DATA_DIRS:${pkgs.qt6.full}/share:${pkgs.kdePackages.kf6}/share
           '';

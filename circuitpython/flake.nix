@@ -84,6 +84,12 @@
             ];
 
             shellHook = ''
+              # Initialize git repository if not already present
+              if [ ! -d .git ]; then
+                git init
+                echo "✓ Initialized git repository"
+              fi
+
               # Create a Python virtualenv for pip packages
               if [ ! -d .venv ]; then
                 ${python}/bin/python -m venv .venv

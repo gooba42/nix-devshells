@@ -24,6 +24,12 @@
             pkgs.git
           ];
           shellHook = ''
+            # Initialize git repository if not already present
+            if [ ! -d .git ]; then
+              git init
+              echo "✓ Initialized git repository"
+            fi
+
             echo "\033[1;34m" # blue bold
             echo "─────────────────────────────────────────────"
             echo " FreeBASIC Nix DevShell"

@@ -49,6 +49,7 @@
                 pkgs.openssl
                 pkgs.krb5
                 pkgs.zlib
+                pkgs.git
               ];
               runScript = "bash";
               profile = ''
@@ -63,6 +64,12 @@
           {
             default = fhs.env.overrideAttrs (_: {
               shellHook = ''
+                # Initialize git repository if not already present
+                if [ ! -d .git ]; then
+                  git init
+                  echo "✓ Initialized git repository"
+                fi
+
                 export DOTNET_ROOT=${pkgs.dotnet-sdk}
                 export DOTNET_CLI_HOME=$HOME/.dotnet
                 export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1

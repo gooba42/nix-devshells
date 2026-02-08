@@ -81,6 +81,12 @@
           default = pkgs.mkShell {
             venvDir = ".venv";
             postShellHook = ''
+              # Initialize git repository if not already present
+              if [ ! -d .git ]; then
+                git init
+                echo "✓ Initialized git repository"
+              fi
+
                               venvVersionWarn() {
                                 local venvVersion
                                 venvVersion="$venvDir/bin/python" -c 'import platform; print(platform.python_version())')"
@@ -96,10 +102,13 @@
               echo "Run 'python -m venv .venv && source .venv/bin/activate' if not already activated."
               echo "See README.md for usage."
             '';
-            packages = with python.pkgs; [
-              venvShellHook
-              pip
-            ];
+            packages =
+              with python.pkgs;
+              [
+                venvShellHook
+                pip
+              ]
+              ++ [ pkgs.git ];
           };
         }
       );
