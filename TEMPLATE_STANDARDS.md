@@ -9,6 +9,7 @@ This document defines the standards for all language/project templates in this w
 Every template **must** include:
 
 - **flake.nix**: Provides a devShell with all necessary tools for the language/project type. The devShell must print a welcome message or usage tip on entry.
+- **default.nix**: NUR-compatible package set entry point (`{ pkgs }: { ... }`) for contribution readiness.
 - **src/**: Contains a minimal, working "hello world" program for the language.
 - **README.md**: Documents usage, build/run, and packaging for Nixpkgs. Must include quickstart, devShell usage, and build/test instructions.
 - **.gitignore**: Language-appropriate, excludes build artifacts, editor files, and Nix/direnv outputs.

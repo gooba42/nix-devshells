@@ -384,12 +384,6 @@
                     exit 1
                   fi
                 fi
-                if [ -f "default.nix" ]; then
-                  if ! grep -q "gnumake" default.nix 2>/dev/null; then
-                    echo "ERROR: ${name} has Makefile but doesn't include gnumake in default.nix" >&2
-                    exit 1
-                  fi
-                fi
               fi
 
               mkdir -p $out
@@ -404,9 +398,6 @@
 
               HAS_GIT=0
               if [ -f "flake.nix" ] && grep -q "git" flake.nix; then
-                HAS_GIT=1
-              fi
-              if [ -f "default.nix" ] && grep -q "git" default.nix; then
                 HAS_GIT=1
               fi
 
