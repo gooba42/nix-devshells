@@ -23,6 +23,7 @@
             pkgs.nix-tree
             pkgs.nvd
             pkgs.git
+            pkgs.gnumake
           ];
           shellHook = ''
             # Initialize git repository if not already present

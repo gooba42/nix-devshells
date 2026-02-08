@@ -44,6 +44,7 @@
 
               # Version control
               git
+              gnumake
             ];
             shellHook = ''
               # Initialize git repository if not already present

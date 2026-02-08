@@ -50,6 +50,7 @@
                 pkgs.krb5
                 pkgs.zlib
                 pkgs.git
+                pkgs.gnumake
               ];
               runScript = "bash";
               profile = ''

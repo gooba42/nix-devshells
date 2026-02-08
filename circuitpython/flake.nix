@@ -81,8 +81,7 @@
 
               # For building/managing CircuitPython bundles
               pkgs.git
-            ];
-
+            pkgs.gnumake
             shellHook = ''
               # Initialize git repository if not already present
               if [ ! -d .git ]; then

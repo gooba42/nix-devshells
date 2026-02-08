@@ -68,6 +68,7 @@
               curl
               wget
               jq
+              gnumake
             ];
 
             shellHook = ''

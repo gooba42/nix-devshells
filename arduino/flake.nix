@@ -57,6 +57,7 @@
           default = pkgs.mkShell {
             packages = cppDevShellPkgs ++ [
               pkgs.git
+              pkgs.gnumake
               pkgs.platformio
               pkgs.arduino-ide
               pkgs.avrdude

@@ -4,15 +4,18 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-  }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
     flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
-      in {
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
         templates = {
           default = {
             path = ./.;
@@ -68,6 +71,7 @@
             ninja
             pkg-config
             git
+            gnumake
 
             # Flashing utilities for various platforms
             esptool # ESP32/ESP8266 flashing via USB-to-UART

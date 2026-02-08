@@ -14,6 +14,7 @@ with pkgs;
   gtest
   lcov
   git
+  gnumake
   # vcpkg and vcpkg-tool removed due to build failures in nixpkgs
   # Add more shared C++ tools here
 ]

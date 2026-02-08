@@ -48,6 +48,7 @@
             libusb1
             pkg-config
             git
+            gnumake
           ];
 
           # Convenience env vars for Blinka FT232H

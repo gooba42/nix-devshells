@@ -55,7 +55,10 @@
         }:
         {
           default = pkgs.mkShell {
-            packages = cppDevShellPkgs ++ [ pkgs.git ];
+            packages = cppDevShellPkgs ++ [
+              pkgs.git
+              pkgs.gnumake
+            ];
             shellHook = ''
               # Initialize git repository if not already present
               if [ ! -d .git ]; then

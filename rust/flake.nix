@@ -62,6 +62,7 @@
             packages = with pkgs; [
               rustToolchain
               git
+              gnumake
               openssl
               pkg-config
               cargo-deny

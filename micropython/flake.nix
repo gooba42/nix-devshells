@@ -69,6 +69,7 @@
               git
               cmake
               gcc
+              gnumake
             ];
 
             shellHook = ''
