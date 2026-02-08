@@ -122,6 +122,118 @@ rshell --port /dev/ttyUSB0
 - **mpremote** — Official MicroPython remote control
 - **rshell** — Remote shell for MicroPython
 - **screen/minicom** — Serial terminals
+- **pytest** — Unit testing framework
+- **pytest-mock** — Mocking for hardware testing
+
+## Makefile Targets
+
+This template includes helpful Make targets for firmware installation and device management:
+
+### Device Detection & Setup
+
+**`make detect-board`**
+
+Auto-detects connected board via USB and provides direct download link to firmware:
+
+```bash
+make detect-board
+# Output example:
+# ✓ Detected: Raspberry Pi Pico (RP2040)
+# Download: https://micropython.org/download/rp2-pico/
+```
+
+Supports automatic detection for:
+
+- Raspberry Pi Pico (RP2040)
+- Adafruit boards
+- ESP32 and ESP32-S2/S3
+- STM32 boards
+
+**`make check-micropython`**
+
+Verifies MicroPython installation status via serial connection:
+
+```bash
+make check-micropython
+# ✓ Serial device detected: /dev/ttyUSB0
+# ✓ MicroPython is running!
+```
+
+Set custom serial port: `make check-micropython SERIAL_PORT=/dev/ttyACM0`
+
+### Firmware Installation
+
+**`make download-guide`**
+
+Shows step-by-step instructions for downloading MicroPython firmware:
+
+```bash
+make download-guide
+```
+
+**`make install-micropython`**
+
+Automatically flashes firmware from the `firmware/` directory to your device (when in bootloader mode):
+
+```bash
+# 1. Put device in bootloader mode
+# 2. Download firmware to firmware/ directory
+# 3. Run:
+make install-micropython
+```
+
+Supports multiple firmware formats:
+
+- UF2 files (RP2040)
+- BIN files (ESP32, ESP8266)
+- HEX files (STM32)
+- DFU files (STM32)
+
+### Code Deployment
+
+**`make flash`**
+
+Copies Python files from `src/` directory to the device via ampy:
+
+```bash
+make flash
+# Copies src/*.py to device
+```
+
+Set custom serial port: `make flash SERIAL_PORT=/dev/ttyACM0`
+
+**`make repl`**
+
+Opens interactive REPL (Read-Eval-Print Loop) using screen:
+
+```bash
+make repl
+# Ctrl-A then Ctrl-\ to exit
+```
+
+Set custom serial port: `make repl SERIAL_PORT=/dev/ttyACM0`
+
+**`make clean`**
+
+Removes Python cache files:
+
+```bash
+make clean
+# Removes *.pyc and __pycache__ directories
+```
+
+### Quick Reference
+
+```bash
+make help                      # Show all available targets
+make detect-board              # Identify connected board
+make download-guide            # Show firmware download instructions
+make install-micropython       # Flash MicroPython firmware
+make check-micropython         # Verify MicroPython is installed
+make flash SERIAL_PORT=/dev/ttyUSB0  # Deploy code to device
+make repl SERIAL_PORT=/dev/ttyUSB0   # Open REPL
+make clean                     # Remove cache files
+```
 
 ## Device Detection
 

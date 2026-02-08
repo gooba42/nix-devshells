@@ -112,18 +112,58 @@ ampy --port /dev/ttyACM0 put src/main.py main.py
 |------|---------|
 | `picotool` | Manage Pico firmware and read/write |
 | `openocd` | Debug via SWD/JTAG interface |
-| `picocom` / `minicom` | Serial terminal for REPL |
+| `screen` / `socat` | Serial terminal for REPL |
 | `python3` | Python interpreter |
 | `pyserial` | Python serial library |
 | `pip` | Install CircuitPython libraries |
+| `ampy` | Upload files to CircuitPython devices |
+| `mpremote` | Modern MicroPython/CircuitPython device interaction |
+| `circup` | CircuitPython library updater |
+| `pytest` | Test CircuitPython code locally |
 
-## Common CircuitPython Libraries
+## CircuitPython Library Bundle
 
-Install these via pip inside the shell:
+### Automated Bundle Download
+
+The easiest way to get all Adafruit CircuitPython libraries is using the automated bundle downloader:
+
+```bash
+nix run .#fetch-bundle
+```
+
+This command:
+
+1. Downloads the latest [Adafruit CircuitPython Bundle](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/latest) from GitHub
+2. Extracts it to `./circuitpython-bundle/`
+3. Shows available libraries and next steps
+
+**Specify a custom location:**
+
+```bash
+nix run .#fetch-bundle -- /path/to/location
+# Creates /path/to/location/circuitpython-bundle/
+```
+
+**Using libraries from the bundle:**
+
+After downloading, copy libraries to your project:
+
+```bash
+# Copy specific libraries to your project
+cp -r circuitpython-bundle/libraries/Adafruit_CircuitPython_NeoPixel src/lib/
+cp -r circuitpython-bundle/libraries/Adafruit_CircuitPython_DHT src/lib/
+
+# Or upload directly to device
+ampy --port /dev/ttyACM0 put circuitpython-bundle/libraries/Adafruit_CircuitPython_NeoPixel lib/
+```
+
+### Manual Installation
+
+You can also install libraries individually via pip:
 
 ```bash
 # Adafruit tools
-pip install adafruit-ampy adafruit-circuitpython-bundle
+pip install adafruit-ampy
 
 # Specific device libraries (examples)
 pip install adafruit-circuitpython-neopixel
@@ -134,7 +174,118 @@ pip install adafruit-circuitpython-ads1x15
 pip install PySerial
 ```
 
-Or edit your CircuitPython `boot.py` to include libraries from a `lib/` directory on the Pico.
+Or edit your CircuitPython `boot.py` to include libraries from a `lib/` directory on the device.
+
+## Makefile Targets
+
+This template includes helpful Make targets for firmware installation and device management:
+
+### Device Detection & Setup
+
+**`make detect-board`**
+
+Auto-detects connected board via USB and provides direct download link to firmware:
+
+```bash
+make detect-board
+# Output example:
+# ✓ Detected: Raspberry Pi Pico (RP2040)
+# Download: https://circuitpython.org/board/raspberry_pi_pico/
+```
+
+Supports automatic detection for:
+
+- Raspberry Pi Pico, Pico W (RP2040)
+- Adafruit boards (Feather, Metro, ItsyBitsy series)
+- ESP32-S2/S3 boards
+
+**`make check-circuitpy`**
+
+Verifies CircuitPython installation status and shows firmware version:
+
+```bash
+make check-circuitpy
+# ✓ CircuitPython detected at /media/user/CIRCUITPY
+# ✓ Firmware info:
+# Adafruit CircuitPython 8.2.10 on 2024-01-16; Raspberry Pi Pico with rp2040
+```
+
+### Firmware Installation
+
+**`make download-guide`**
+
+Shows step-by-step instructions for downloading CircuitPython firmware:
+
+```bash
+make download-guide
+```
+
+**`make install-circuitpython`**
+
+Automatically flashes firmware from the `firmware/` directory to your device (when in bootloader mode):
+
+```bash
+# 1. Put device in BOOTSEL mode (hold BOOTSEL button while plugging in USB)
+# 2. Download firmware to firmware/ directory
+# 3. Run:
+make install-circuitpython
+```
+
+Supports:
+
+- UF2 files (RP2040, SAMD, nRF52)
+- BIN files (ESP32-S2/S3)
+- Multiple board types with automatic format detection
+
+### Code Deployment
+
+**`make flash`**
+
+Copies Python files from `src/` directory to the CIRCUITPY device:
+
+```bash
+make flash
+# Copies src/*.py to CIRCUITPY drive
+```
+
+Automatically re-runs your code when finished.
+
+**`make clean`**
+
+Removes Python cache files:
+
+```bash
+make clean
+# Removes *.pyc and __pycache__ directories
+```
+
+### Quick Reference
+
+```bash
+make help                      # Show all available targets
+make detect-board              # Identify connected board
+make download-guide            # Show firmware download instructions
+make install-circuitpython     # Flash CircuitPython firmware
+make check-circuitpy           # Verify CircuitPython is installed
+make flash                     # Deploy code to device
+make clean                     # Remove cache files
+```
+
+## Nix App Targets
+
+Beyond Make, the template provides Nix app targets for common operations:
+
+**`nix run .#fetch-bundle`**
+
+Download the latest CircuitPython library bundle from GitHub (see [CircuitPython Library Bundle](#circuitpython-library-bundle) section)
+
+**`nix run .#flash`**
+
+Flash CircuitPython UF2 firmware to RP2040 device (set `UF2=/path/to/firmware.uf2` environment variable)
+
+**`nix run .#copy-usb`**
+
+Copy files to RP2040 BOOTSEL drive for boards that mount as USB storage
 
 ## Project Structure
 
@@ -144,8 +295,13 @@ my-pico-project/
 │   └── main.py              # Your CircuitPython code
 ├── lib/                     # CircuitPython libraries (on device)
 │   └── (copy .mpy files here)
+├── firmware/                # CircuitPython firmware files for flashing
+│   └── (download .uf2 or .bin files here)
+├── tests/                   # pytest test files
+│   └── test_main.py
 ├── flake.nix               # Nix environment definition
 ├── .envrc                  # direnv setup
+├── Makefile                # Device management targets
 └── .gitignore              # Git ignore rules
 ```
 
@@ -166,6 +322,43 @@ gdb
 > break main
 > continue
 ```
+
+## Local Testing with pytest
+
+Test your CircuitPython code locally without hardware using pytest and mocking:
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=src tests/
+
+# Run specific test file
+pytest tests/test_main.py -v
+```
+
+**Example test file** (`tests/test_main.py`):
+
+```python
+import pytest
+from unittest.mock import Mock, MagicMock, patch
+
+# Mock board and digitalio modules
+@pytest.fixture
+def mock_board():
+    board = MagicMock()
+    board.LED = Mock()
+    return board
+
+def test_led_blink(mock_board):
+    """Test LED blink logic without hardware"""
+    with patch('board.board', mock_board):
+        # Your test code here
+        assert mock_board.LED is not None
+```
+
+Use `pytest-mock` to easily create hardware mocks for testing sensor reads, GPIO operations, and I2C/SPI communication.
 
 ## Tips & Tricks
 

@@ -95,6 +95,8 @@
               # For building/managing CircuitPython bundles
               pkgs.git
               pkgs.gnumake
+              pkgs.curl # For downloading bundle
+              pkgs.unzip # For extracting bundle
             ];
             shellHook = ''
               # Initialize git repository if not already present
@@ -120,11 +122,11 @@
               echo "Tools: picotool, esptool, openocd, bossa, dfu-util, ampy, screen, socat"
               echo ""
               echo "Common commands:"
-              echo "  make detect-board      # Auto-detect board"
-              echo "  make flash             # Copy .py to CIRCUITPY drive"
-              echo "  ampy --port /dev/ttyACM0 put src/main.py main.py"
-              echo "  screen /dev/ttyACM0 115200   # REPL"
-              echo "  pip install adafruit-circuitpython-bundle"
+              echo \"  nix run .#fetch-bundle  # Download latest Adafruit bundle\"
+              echo \"  make detect-board       # Auto-detect board\"
+              echo \"  make flash              # Copy .py to CIRCUITPY drive\"
+              echo \"  ampy --port /dev/ttyACM0 put src/main.py main.py\"
+              echo \"  screen /dev/ttyACM0 115200   # REPL\"
               echo ""
               echo "See README.md for full usage and board-specific notes."
               echo "─────────────────────────────────────────────"
@@ -155,6 +157,71 @@
             fi
             echo "Flashing '$UF2' to Pico with picotool (press BOOTSEL or reset into BOOTSEL first)..."
             exec ${pkgs.picotool}/bin/picotool load "$UF2" -f
+          '';
+
+          fetch-bundle = pkgs.writeShellScriptBin "fetch-bundle" ''
+            #!/usr/bin/env bash
+            set -euo pipefail
+
+            BUNDLE_DIR="''${1:-.}\circuitpython-bundle"
+            BUNDLE_ZIP="/tmp/adafruit-circuitpython-bundle.zip"
+            TEMP_EXTRACT="/tmp/bundle-extract"
+
+            echo "Fetching latest CircuitPython bundle from GitHub..."
+            echo "Target directory: $BUNDLE_DIR"
+            echo ""
+
+            # Fetch the release metadata to get the download URL
+            API_URL="https://api.github.com/repos/adafruit/Adafruit_CircuitPython_Bundle/releases/latest"
+            echo "Querying GitHub API: $API_URL"
+
+            DOWNLOAD_URL=$(${pkgs.curl}/bin/curl -s "$API_URL" | ${pkgs.jq}/bin/jq -r '.assets[] | select(.name | endswith(".zip")) | .browser_download_url' | head -1)
+
+            if [ -z "$DOWNLOAD_URL" ]; then
+              echo "Error: Could not find download URL for CircuitPython bundle" >&2
+              exit 1
+            fi
+
+            echo "Download URL: $DOWNLOAD_URL"
+            echo ""
+            echo "Downloading bundle (this may take a minute)..."
+
+            ${pkgs.curl}/bin/curl -L -o "$BUNDLE_ZIP" --progress-bar "$DOWNLOAD_URL"
+            echo "\nDownload complete!"
+            echo ""
+
+            # Extract the bundle
+            echo "Extracting bundle..."
+            rm -rf "$TEMP_EXTRACT"
+            mkdir -p "$TEMP_EXTRACT"
+            ${pkgs.unzip}/bin/unzip -q -d "$TEMP_EXTRACT" "$BUNDLE_ZIP"
+
+            # Find the actual bundle directory (usually the root folder in the zip)
+            BUNDLE_SRC=$(${pkgs.findutils}/bin/find "$TEMP_EXTRACT" -maxdepth 1 -type d ! -name ".*" | head -1)
+
+            if [ -z "$BUNDLE_SRC" ]; then
+              echo "Error: Could not find bundle directory in extracted zip" >&2
+              exit 1
+            fi
+
+            # Move to final location
+            rm -rf "$BUNDLE_DIR"
+            mkdir -p "$(dirname "$BUNDLE_DIR")"
+            mv "$BUNDLE_SRC" "$BUNDLE_DIR"
+
+            # Cleanup
+            rm -f "$BUNDLE_ZIP"
+            rm -rf "$TEMP_EXTRACT"
+
+            echo "✓ Bundle extracted to: $BUNDLE_DIR"
+            echo ""
+            echo "Available libraries:"
+            ${pkgs.findutils}/bin/find "$BUNDLE_DIR/libraries" -maxdepth 1 -type d -name "Adafruit_CircuitPython*" | wc -l | xargs echo "  Total libraries:"
+            echo ""
+            echo "Next steps:"
+            echo "  1. Review the libraries in: $BUNDLE_DIR/libraries"
+            echo "  2. Copy desired libraries to your project: cp -r $BUNDLE_DIR/libraries/Adafruit_CircuitPython_* src/"
+            echo "  3. Or upload directly to board: ampy --port /dev/ttyACM0 put $BUNDLE_DIR/libraries/Adafruit_CircuitPython_NeoPixel lib/"
           '';
 
           copy-usb = pkgs.writeShellScriptBin "copy-usb" ''
@@ -199,6 +266,10 @@
           flash = {
             type = "app";
             program = pkgs.lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.flash;
+          };
+          fetch-bundle = {
+            type = "app";
+            program = pkgs.lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.fetch-bundle;
           };
           copy-usb = {
             type = "app";
