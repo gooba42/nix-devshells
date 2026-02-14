@@ -1,0 +1,6 @@
+[project]
+name = "typescript-template"
+description = "A reusable Nix flake template for TypeScript development with Node.js."
+version = "0.1.0"
+authors = ["gooba42 <your@email>"]
+license = "MIT"

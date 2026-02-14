@@ -1,0 +1,49 @@
+jest.config.js
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+*.pem
+
+# Dependencies
+node_modules/
+/.npm
+/.eslintcache
+
+# Production
+/build
+/dist
+
+# Nix
+.envrc
+result
+result-*
+
+# direnv
+.direnv
+.env.local
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+.DS_Store
+
+# IDE
+.vs
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# Testing
+/coverage
+/.nyc_output
+
+# Cache
+.npm-cache

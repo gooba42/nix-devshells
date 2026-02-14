@@ -1,0 +1,40 @@
+{
+    "name": "typescript-template",
+    "version": "0.1.0",
+    "description": "A starter TypeScript project with Nix flakes",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "tsc --watch",
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "lint": "eslint src/",
+        "lint:fix": "eslint src/ --fix",
+        "format": "prettier --write \"src/**/*.{ts,js,json}\"",
+        "check": "npm run lint && npm run format",
+        "test": "jest",
+        "clean": "rm -rf dist node_modules"
+    },
+    "keywords": [
+        "typescript",
+        "nix",
+        "flakes",
+        "development"
+    ],
+    "author": "gooba42",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/jest": "^29.5.0",
+        "@types/node": "^20.0.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.0.0",
+        "jest": "^29.0.0",
+        "prettier": "^3.0.0",
+        "ts-jest": "^29.0.0",
+        "typescript": "^5.0.0"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    }
+}
