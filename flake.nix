@@ -170,6 +170,15 @@
           '';
           path = ./rust;
         };
+        typescript = {
+          description = "TypeScript development environment with Node.js, esbuild, and full tooling";
+          welcomeText = ''
+            Welcome to the TypeScript template.
+            - Start: nix develop
+            - Next:  Open README.md for development setup
+          '';
+          path = ./typescript;
+        };
         haskell-dev = {
           description = "Haskell development environment with GHC and Cabal";
           welcomeText = ''
