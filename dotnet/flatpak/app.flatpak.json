@@ -1,0 +1,22 @@
+{
+    "app-id": "org.example.dotnetdevshell",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "23.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "dotnetdevshell-app",
+    "modules": [
+        {
+            "name": "dotnetdevshell-app",
+            "buildsystem": "simple",
+            "build-commands": [
+                "dotnet publish -c Release -o out"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "../src"
+                }
+            ]
+        }
+    ]
+}

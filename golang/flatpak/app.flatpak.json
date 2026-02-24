@@ -1,0 +1,22 @@
+{
+    "app-id": "org.example.golangdevshell",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "23.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "golangdevshell-app",
+    "modules": [
+        {
+            "name": "golangdevshell-app",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "../src"
+                }
+            ]
+        }
+    ]
+}

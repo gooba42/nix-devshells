@@ -35,6 +35,7 @@ A production-ready TypeScript development environment template has been successf
 ## Key Features
 
 ### ✅ Development Tools Included
+
 - **Node.js 20.x** - Latest LTS runtime
 - **npm/pnpm/yarn** - Package managers
 - **TypeScript 5.x** - Static typing with latest features
@@ -46,6 +47,7 @@ A production-ready TypeScript development environment template has been successf
 - **Jest 29.x** - Testing framework with TypeScript support
 
 ### ✅ Configuration Files
+
 - **tsconfig.json** - Strict compiler settings, ES2020 target, incremental compilation
 - **package.json** - Pre-configured scripts (dev, build, test, lint, format)
 - **eslint.config.js** - TypeScript-aware rules
@@ -55,10 +57,12 @@ A production-ready TypeScript development environment template has been successf
 - **.gitignore** - Comprehensive Node.js ignores
 
 ### ✅ Starter Code
+
 - **src/index.ts** - Example application with type-safe patterns
-- **src/__tests__/example.test.ts** - Jest test examples with type guards and generics
+- **src/**tests**/example.test.ts** - Jest test examples with type guards and generics
 
 ### ✅ Documentation
+
 - **README.md** - Comprehensive guide (8700+ lines) covering:
   - Quick start and template initialization
   - All included tools with descriptions
@@ -74,6 +78,7 @@ A production-ready TypeScript development environment template has been successf
   - Advanced usage patterns (monorepos, workspaces)
 
 ### ✅ Build Automation
+
 - **Makefile** - Make targets:
   - `make install` - Install dependencies
   - `make dev` - Start development server
@@ -99,6 +104,7 @@ nix develop /home/gooba42/nixos/flakes#typescript
 ```
 
 ### Changes Made to Main Flake
+
 - Updated `/home/gooba42/nixos/flakes/flake.nix` to include TypeScript template
 - Added welcome message for TypeScript template initialization
 - Positioned alphabetically between `python` and `rust` templates
@@ -106,22 +112,26 @@ nix develop /home/gooba42/nixos/flakes#typescript
 ## Verification
 
 ✅ **Template Initialization** - Successfully tested with:
+
 ```bash
 nix flake init -t /home/gooba42/nixos/flakes#typescript
 ```
 
 ✅ **File Structure** - All 17 files created correctly:
+
 - Configuration files (JSON, JS, Nix)
 - Documentation (README, TEMPLATE_INFO)
 - Starter code (TypeScript examples and tests)
 - Meta files (.editorconfig, .gitignore, .envrc)
 
 ✅ **Flake Validation** - `nix flake show` confirms:
+
 - Valid flake.nix syntax
 - Correct devShells for all supported systems
 - Template properly registered
 
 ✅ **Git Integration** - Committed to repository:
+
 - 15 files added to TypeScript directory
 - Main flake updated with template reference
 - Ready for use
@@ -141,6 +151,7 @@ nix flake init -t /home/gooba42/nixos/flakes#typescript
 ## Usage Patterns
 
 ### For New Projects
+
 ```bash
 mkdir my-app && cd my-app
 nix flake init -t path:/home/gooba42/nixos/flakes#typescript
@@ -150,6 +161,7 @@ npm run dev
 ```
 
 ### For Existing Projects
+
 ```bash
 cd existing-ts-project
 cp -r /home/gooba42/nixos/flakes/typescript/{flake.nix,shell.nix,.envrc} .
@@ -158,6 +170,7 @@ npm install
 ```
 
 ### With direnv
+
 ```bash
 direnv allow      # Auto-loads Nix environment
 npm install
@@ -167,6 +180,7 @@ npm run dev
 ## Standards Adherence
 
 ✅ Follows repository conventions:
+
 - Directory structure matches other templates
 - Flake.nix pattern consistent with peers
 - Documentation equivalent in depth and quality

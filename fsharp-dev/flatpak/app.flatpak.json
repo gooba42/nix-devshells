@@ -1,0 +1,22 @@
+{
+    "app-id": "org.example.fsharpdevshell",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "23.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "fsharpdevshell-app",
+    "modules": [
+        {
+            "name": "fsharpdevshell-app",
+            "buildsystem": "simple",
+            "build-commands": [
+                "dotnet publish -c Release -o out"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "../src"
+                }
+            ]
+        }
+    ]
+}

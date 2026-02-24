@@ -7,12 +7,14 @@ A complete, production-ready TypeScript Nix flake template with comprehensive to
 ## What's Included
 
 ### Core Infrastructure
+
 - **flake.nix** - Complete Nix flake with Node.js 20, TypeScript, ESLint, Prettier, esbuild, Vite, Jest
 - **shell.nix** - Legacy Nix shell fallback
 - **default.nix** - Template packaging for reusability
 - **.envrc** - direnv integration for automatic environment loading
 
 ### Development Tools
+
 - Node.js 20.x with npm, pnpm, and yarn
 - TypeScript 5.x compiler and language server
 - ESLint 8.x for linting
@@ -23,6 +25,7 @@ A complete, production-ready TypeScript Nix flake template with comprehensive to
 - Git integration
 
 ### Configuration Files
+
 - **tsconfig.json** - Strict TypeScript configuration with modern targets
 - **package.json** - Project metadata with all essential scripts
 - **eslint.config.js** - ESLint rules for TypeScript projects
@@ -30,6 +33,7 @@ A complete, production-ready TypeScript Nix flake template with comprehensive to
 - **jest.config.js** - Jest testing configuration
 
 ### Quality & Documentation
+
 - **README.md** (5,000+ lines) - Comprehensive guide covering:
   - Quick start instructions
   - All included tools with versions
@@ -43,14 +47,16 @@ A complete, production-ready TypeScript Nix flake template with comprehensive to
   - Troubleshooting section
 
 ### Starter Code
+
 - **src/index.ts** - Example application with type-safe patterns
-- **src/__tests__/example.test.ts** - Jest test examples demonstrating:
+- **src/**tests**/example.test.ts** - Jest test examples demonstrating:
   - Basic assertions
   - Type guards
   - Generic functions
   - TypeScript patterns
 
 ### Project Files
+
 - **.gitignore** - Comprehensive ignore rules for Node.js projects
 - **.editorconfig** - Consistent editor settings
 - **Makefile** - Common development targets (install, dev, build, test, lint, format, clean)
@@ -59,6 +65,7 @@ A complete, production-ready TypeScript Nix flake template with comprehensive to
 ## Quick Usage
 
 ### Initialize from Template
+
 ```sh
 nix flake init -t path:../flakes#typescript
 nix develop
@@ -67,6 +74,7 @@ npm run dev
 ```
 
 ### Use with direnv
+
 ```sh
 cd typescript-project
 direnv allow
@@ -112,11 +120,13 @@ typescript/
 ## Integration with Main Flakes
 
 The flake is fully integrated as a template in the main flakes repository and can be referenced as:
+
 ```sh
 nix flake init -t path:/home/gooba42/nixos/flakes#typescript
 ```
 
 Or from any directory:
+
 ```sh
 nix develop /home/gooba42/nixos/flakes#typescript
 ```
@@ -124,6 +134,7 @@ nix develop /home/gooba42/nixos/flakes#typescript
 ## Standards Adherence
 
 This template follows all conventions established in the flakes repository:
+
 - Matches directory structure and naming conventions
 - Uses consistent flake.nix patterns from other templates
 - Includes all standard documentation (README.md, project.toml)

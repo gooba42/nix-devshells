@@ -1,0 +1,22 @@
+{
+    "app-id": "org.example.cdevshell",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "23.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "cdevshell-app",
+    "modules": [
+        {
+            "name": "cdevshell-app",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "../src"
+                }
+            ]
+        }
+    ]
+}

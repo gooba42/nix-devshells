@@ -9,3 +9,9 @@ run:
 
 clean:
 	dotnet clean src/HelloFSharp.fsproj
+
+
+# Flatpak build target
+.PHONY: flatpak-build
+flatpak-build:
+	flatpak-builder --force-clean build-flatpak flatpak/app.flatpak.json

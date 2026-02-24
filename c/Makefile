@@ -17,3 +17,9 @@ test:
 	@echo "No tests defined. Add your test targets here."
 
 .PHONY: all clean test
+
+
+# Flatpak build target
+.PHONY: flatpak-build
+flatpak-build:
+	flatpak-builder --force-clean build-flatpak flatpak/app.flatpak.json

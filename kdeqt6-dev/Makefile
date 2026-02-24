@@ -1,17 +1,15 @@
+# Makefile for KDE/Qt6 template
+.PHONY: build run clean
+
 build:
-	go build ./...
+	cmake -B build
+	cmake --build build
 
-test:
-	go test ./...
-
-lint:
-	golangci-lint run ./...
+run:
+	./build/your-app
 
 clean:
-	rm -rf bin
-
-.PHONY: build test lint clean
-
+	rm -rf build
 
 # Flatpak build target
 .PHONY: flatpak-build

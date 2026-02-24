@@ -1,6 +1,6 @@
 /**
  * Example test suite for TypeScript project
- * 
+ *
  * This demonstrates Jest testing patterns for TypeScript.
  * Add your own tests here.
  */

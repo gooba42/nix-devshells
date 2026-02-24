@@ -1,0 +1,22 @@
+{
+    "app-id": "org.example.rustdevshell",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "23.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "rustdevshell-app",
+    "modules": [
+        {
+            "name": "rustdevshell-app",
+            "buildsystem": "simple",
+            "build-commands": [
+                "cargo build --release"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "../src"
+                }
+            ]
+        }
+    ]
+}

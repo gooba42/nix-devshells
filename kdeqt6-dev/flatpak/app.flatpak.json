@@ -1,0 +1,22 @@
+{
+    "app-id": "org.example.kdeqt6devshell",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.0",
+    "sdk": "org.kde.Sdk",
+    "command": "kdeqt6devshell-app",
+    "modules": [
+        {
+            "name": "kdeqt6devshell-app",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "../src"
+                }
+            ]
+        }
+    ]
+}
