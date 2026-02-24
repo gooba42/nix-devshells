@@ -24,6 +24,7 @@
             pkgs.nvd
             pkgs.git
             pkgs.gnumake
+            pkgs.pre-commit
           ];
           shellHook = ''
             # Initialize git repository if not already present

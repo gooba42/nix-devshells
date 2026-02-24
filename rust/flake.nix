@@ -83,6 +83,7 @@
               pkgsCross.avr.buildPackages.libc
               pkgsCross.avr.buildPackages.gcc
               ravedude
+              pre-commit
             ];
 
             env = {

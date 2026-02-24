@@ -39,6 +39,7 @@
               inherit system;
               config.allowUnfree = true;
             };
+            pre-commit = pkgs.pre-commit;
             fhs = pkgs.buildFHSEnv {
               name = "dotnet-fhs-shell";
               targetPkgs = pkgs: [

@@ -33,6 +33,7 @@
                 lcov
               ]
               ++ (if stdenv.isDarwin then [ ] else [ gdb ]);
+                ++ [ pkgs.pre-commit ];
           in
           f {
             inherit pkgs;

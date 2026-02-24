@@ -38,6 +38,7 @@
             packages = with pkgs; [
               # go (version is specified by overlay)
               go
+              pre-commit
 
               # goimports, godoc, etc.
               gotools

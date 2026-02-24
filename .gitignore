@@ -18,3 +18,5 @@ result-*
 # Templates: let project owners decide when to lock versions
 flake.lock
 **/flake.lock
+
+.fake

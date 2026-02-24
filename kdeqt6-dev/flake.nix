@@ -38,6 +38,7 @@
             pkgs.nix-tree
             pkgs.nvd
             pkgs.git
+            pkgs.pre-commit
           ];
           shellHook = ''
             # Initialize git repository if not already present
